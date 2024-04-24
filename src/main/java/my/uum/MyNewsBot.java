@@ -1,10 +1,13 @@
 package my.uum;
 
+import org.json.JSONArray;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.io.IOException;
 
 public class MyNewsBot extends TelegramLongPollingBot {
     private final String newsApiKey = "e21629eda54ba291263f3cb2b4fd1328";
@@ -39,6 +42,12 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     private void fetchAndSendHeadlines(Long chatId) {
         // Implement logic to fetch headlines from News API and send them to the user
+        try {
+            JSONArray headlines = NewsApiClient.getTopHeadlines();
+            sendArticles(chatId, headlines);
+        } catch (IOException e) {
+            sendText(chatId, "Failed to fetch headlines. Please try again later.");
+        }
     }
 
     private void fetchAndSendNewsByCategory(Long chatId, String category) {
@@ -59,6 +68,17 @@ public class MyNewsBot extends TelegramLongPollingBot {
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    private void sendArticles(Long chatId, JSONArray articles) {
+        StringBuilder message = new StringBuilder();
+        for (int i = 0; i < articles.length(); i++) {
+            JSONObject article = articles.getJSONObject(i);
+            String title = article.getString("title");
+            String url = article.getString("url");
+            message.append("<b>").append(title).append("</b>\n").append(url).append("\n\n");
+        }
+        sendText(chatId, message.toString());
     }
 
     @Override
