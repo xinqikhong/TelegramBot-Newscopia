@@ -28,7 +28,7 @@ public class NewsApiClient {
 
     public static JSONArray searchNewsByKeyword(String keyword) throws IOException {
         String encodedKeyword = URLEncoder.encode(keyword, StandardCharsets.UTF_8.toString());
-        String url = NEWS_API_BASE_URL + "everything?q=" + encodedKeyword + "&apikey=" + NEWS_API_KEY;
+        String url = NEWS_API_BASE_URL + "search?q=" + encodedKeyword + "&apikey=" + NEWS_API_KEY;
         return sendGetRequest(url);
     }
 

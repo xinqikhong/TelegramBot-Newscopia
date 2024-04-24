@@ -30,9 +30,9 @@ public class MyNewsBot extends TelegramLongPollingBot {
                         "/technology - Get technology news\n" +
                         "/search [keyword] - Search for news by keyword");
             } else if (text.equals("/headlines")) {
-                fetchAndSend3Headlines(chatId);
+                fetchAndSendHeadlines(chatId);
             } else if (text.equals("/more")) {
-                fetchAndSendMoreHeadlines(chatId);
+                fetchAndSendMore(chatId);
             } else if (text.equals("/sports")) {
                 fetchAndSendNewsByCategory(chatId, "sports");
             } else if (text.equals("/technology")) {
@@ -44,7 +44,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
-    private void fetchAndSend3Headlines(Long chatId) {
+    private void fetchAndSendHeadlines(Long chatId) {
         try {
             fetchedNews = NewsApiClient.getTopHeadlines();
             newsToShow  = new JSONArray();
@@ -55,7 +55,6 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
             sendArticles(chatId, newsToShow);
 
-            // If there are more fetchedNews available, provide an option to fetch more
             if (fetchedNews.length() > 3) {
                 sendText(chatId, "Type /more to view more headlines.");
             }
@@ -64,7 +63,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
-    private void fetchAndSendMoreHeadlines(Long chatId) {
+    private void fetchAndSendMore(Long chatId) {
         if (fetchedNews != null) {
             newsToShow = new JSONArray();
 
