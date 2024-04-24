@@ -12,21 +12,11 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class NewsApiClient {
-
     private static final String GNEWS_API_BASE_URL = "https://gnews.io/api/v4/";
-    private static final String GNEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328"; // Replace with your News API key
-
-    private static final String NEWSDATA_API_BASE_URL = "https://newsapi.org/v2/";
-    private static final String NEWSDATA_API_KEY = "338cc30c261d4cf5a0882bc752d70928";
+    private static final String GNEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328";
 
     public static JSONArray getTopHeadlines() throws IOException {
         String url = GNEWS_API_BASE_URL + "top-headlines?lang=en&apikey=" + GNEWS_API_KEY;
-        return sendGetRequest(url);
-    }
-
-    public static JSONArray getNewsByCategory(String category) throws IOException {
-        String url = NEWSDATA_API_BASE_URL + "sources?language=en&category=" + category + "&apiKey=" + NEWSDATA_API_KEY;
-        System.out.println(url);
         return sendGetRequest(url);
     }
 
@@ -52,7 +42,7 @@ public class NewsApiClient {
                 }
             }
         }
-        return new JSONArray(); // Return empty array if no articles found
+        return new JSONArray();
     }
 }
 
