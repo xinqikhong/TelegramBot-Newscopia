@@ -7,8 +7,12 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
+
 
 public class MyNewsBot extends TelegramLongPollingBot {
     private JSONArray fetchedNews = null;
@@ -26,17 +30,17 @@ public class MyNewsBot extends TelegramLongPollingBot {
             } else if (text.equals("/help")) {
                 sendText(chatId, "Available commands:\n" +
                         "/headlines - Get latest news headlines\n" +
-                        "/sports - Get sports news\n" +
-                        "/technology - Get technology news\n" +
+                        "/category - Search for news by category\n" +
+                        "/country - Search for news by country\n" +
                         "/search [keyword] - Search for news by keyword");
             } else if (text.equals("/headlines")) {
                 fetchAndSendHeadlines(chatId);
             } else if (text.equals("/more")) {
                 fetchAndSendMore(chatId);
-            } else if (text.equals("/sports")) {
-                fetchAndSendNewsByCategory(chatId, "sports");
-            } else if (text.equals("/technology")) {
-                fetchAndSendNewsByCategory(chatId, "technology");
+            } else if (text.equals("/category")) {
+                sendCategoryMenu(chatId);
+            } else if (text.equals("/country")) {
+                sendCountryMenu(chatId);
             } else if (text.startsWith("/search")) {
                 String keyword = text.substring(8);
                 searchAndSendNewsByKeyword(chatId, keyword);
@@ -81,7 +85,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
-    private void fetchAndSendNewsByCategory(Long chatId, String category) {
+    /*private void fetchAndSendNewsByCategory(Long chatId, String category) {
         // Implement logic to fetch news by category from News API and send them to the user
         try {
             JSONArray news = NewsApiClient.getNewsByCategory(category);
@@ -89,6 +93,79 @@ public class MyNewsBot extends TelegramLongPollingBot {
         } catch (IOException e) {
             sendText(chatId, "Failed to fetch news. Please try again later.");
         }
+    }*/
+    private void sendCategoryMenu(Long chatId) {
+        SendMessage message = SendMessage.builder()
+                .chatId(chatId.toString())
+                .text("Search By Category")
+                .replyMarkup(createCategoryMenu())
+                .build();
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private InlineKeyboardMarkup createCategoryMenu() {
+        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        // Define category buttons
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(InlineKeyboardButton.builder().text("General").callbackData("category_general").build());
+        row1.add(InlineKeyboardButton.builder().text("Business").callbackData("category_business").build());
+        keyboard.add(row1);
+
+        List<InlineKeyboardButton> row2 = new ArrayList<>();
+        row2.add(InlineKeyboardButton.builder().text("Technology").callbackData("category_technology").build());
+        row2.add(InlineKeyboardButton.builder().text("Health").callbackData("category_health").build());
+        keyboard.add(row2);
+
+        List<InlineKeyboardButton> row3 = new ArrayList<>();
+        row3.add(InlineKeyboardButton.builder().text("Sports").callbackData("category_sports").build());
+        row3.add(InlineKeyboardButton.builder().text("Entertainment").callbackData("category_entertainment").build());
+        keyboard.add(row3);
+
+        markup.setKeyboard(keyboard);
+        return markup;
+    }
+
+    private void sendCountryMenu(Long chatId) {
+        SendMessage message = SendMessage.builder()
+                .chatId(chatId.toString())
+                .text("Search By Country")
+                .replyMarkup(createCountryMenu())
+                .build();
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private InlineKeyboardMarkup createCountryMenu() {
+        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+
+        /// Define country buttons
+        List<InlineKeyboardButton> row1 = new ArrayList<>();
+        row1.add(InlineKeyboardButton.builder().text("United States").callbackData("country_us").build());
+        row1.add(InlineKeyboardButton.builder().text("United Kingdom").callbackData("country_gb").build());
+        keyboard.add(row1);
+
+        List<InlineKeyboardButton> row2 = new ArrayList<>();
+        row2.add(InlineKeyboardButton.builder().text("Australia").callbackData("country_au").build());
+        row2.add(InlineKeyboardButton.builder().text("Switzerland").callbackData("country_ch").build());
+        keyboard.add(row2);
+
+        List<InlineKeyboardButton> row3 = new ArrayList<>();
+        row3.add(InlineKeyboardButton.builder().text("Singapore").callbackData("country_sg").build());
+        row3.add(InlineKeyboardButton.builder().text("Philippines").callbackData("country_ph").build());
+        keyboard.add(row3);
+
+        markup.setKeyboard(keyboard);
+        return markup;
     }
 
     private void searchAndSendNewsByKeyword(Long chatId, String keyword) {
