@@ -8,7 +8,7 @@ public class App
 {
     public static void main(String[] args) throws TelegramApiException {
         TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-        Bot bot = new Bot();
+        MyNewsBot bot = new MyNewsBot();
         botsApi.registerBot(bot);
     }
 }
