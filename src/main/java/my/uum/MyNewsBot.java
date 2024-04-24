@@ -39,20 +39,21 @@ public class MyNewsBot extends TelegramLongPollingBot {
             } else if (text.equals("/country")) {
                 sendCountryMenu(chatId);
             } else if (text.startsWith("/search")) {
-                String keyword = text.substring(8);
-                Search(chatId, keyword, 3);
+                if (text.length() <= 7) {
+                    sendText(chatId, "Please type the keyword after the /search command. (e.g. /search news)");
+                } else {
+                    String keyword = text.substring(8);
+                    Search(chatId, keyword, 2);
+                }
             }
         } else if (update.hasCallbackQuery()) {
             // Handle callback queries
             String callbackData = update.getCallbackQuery().getData();
             Long chatId = update.getCallbackQuery().getMessage().getChatId();
 
-            if (callbackData.startsWith("category_")) {
-                String category = callbackData.substring(9);
-                Search(chatId, category, 1);
-            } else if (callbackData.startsWith("country_")) {
+            if (callbackData.startsWith("country_")) {
                 String countryCode = callbackData.substring(8);
-                Search(chatId, countryCode, 2);
+                Search(chatId, countryCode, 1);
             }
         }
     }
@@ -100,7 +101,9 @@ public class MyNewsBot extends TelegramLongPollingBot {
             switch (identifier) {
                 case 1:
                     fetchedNews = NewsApiClient.getNewsByCountry(searchText);
-                    context = "Country: " + searchText;
+                    String countryName = getCountryName(searchText);
+                    context = "Country: " + countryName;
+                    System.out.println(context);
                     break;
                 case 2:
                     fetchedNews = NewsApiClient.getNewsByKeyword(searchText);
@@ -188,9 +191,28 @@ public class MyNewsBot extends TelegramLongPollingBot {
             JSONObject article = articles.getJSONObject(i);
             String title = article.getString("title").replaceAll("<b>|</b>", "");
             String url = article.getString("url");
-            message.append(title).append("\n").append(url).append("\n\n");
+            message.append((i + 1) + ". ").append(title).append("\n").append(url).append("\n\n");
         }
         sendText(chatId, message.toString());
+    }
+
+    private String getCountryName(String countryCode) {
+        switch (countryCode) {
+            case "us":
+                return "United States";
+            case "gb":
+                return "United Kingdom";
+            case "au":
+                return "Australia";
+            case "ch":
+                return "Switzerland";
+            case "sg":
+                return "Singapore";
+            case "ph":
+                return "Philippines";
+            default:
+                return countryCode; // If country code is not found, return the code itself
+        }
     }
 
     @Override
