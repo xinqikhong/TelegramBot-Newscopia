@@ -1,6 +1,7 @@
 package my.uum;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -52,17 +53,29 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     private void fetchAndSendNewsByCategory(Long chatId, String category) {
         // Implement logic to fetch news by category from News API and send them to the user
+        try {
+            JSONArray news = NewsApiClient.getNewsByCategory(category);
+            sendArticles(chatId, news);
+        } catch (IOException e) {
+            sendText(chatId, "Failed to fetch news. Please try again later.");
+        }
     }
 
     private void searchAndSendNewsByKeyword(Long chatId, String keyword) {
         // Implement logic to search news by keyword from News API and send them to the user
+        try {
+            JSONArray news = NewsApiClient.searchNewsByKeyword(keyword);
+            sendArticles(chatId, news);
+        } catch (IOException e) {
+            sendText(chatId, "Failed to search news. Please try again later.");
+        }
     }
 
     private void sendText(Long chatId, String text) {
         //Send Welcome Msg when user enter command /start
-        SendMessage message = new SendMessage()
-                .setChatId(chatId)
-                .setText(text);
+        SendMessage message = SendMessage.builder()
+                .chatId(chatId.toString()) //Who are we sending a message to
+                .text(text).build();
         try {
             execute(message);
         } catch (TelegramApiException e) {
