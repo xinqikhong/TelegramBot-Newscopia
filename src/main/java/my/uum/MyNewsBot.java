@@ -64,15 +64,20 @@ public class MyNewsBot extends TelegramLongPollingBot {
     }
 
     private void fetchAndSendMore(Long chatId) {
-        if (fetchedNews != null) {
-            newsToShow = new JSONArray();
+        try {
+            if (fetchedNews != null) {
+                newsToShow = new JSONArray();
 
-            for (int i = 3; i < fetchedNews.length(); i++) {
-                newsToShow.put(fetchedNews.getJSONObject(i));
+                for (int i = 3; i < fetchedNews.length(); i++) {
+                    newsToShow.put(fetchedNews.getJSONObject(i));
+                }
+                sendArticles(chatId, newsToShow);
+            } else {
+                sendText(chatId, "No news to show.");
             }
-            sendArticles(chatId, newsToShow);
-        } else {
-            sendText(chatId, "No headlines to show. Please fetch headlines using /headlines.");
+        }catch (Exception e) {
+            sendText(chatId, "An unexpected error occurred while processing your request. Please try again later.");
+            e.printStackTrace(); // This will print the stack trace for debugging purposes
         }
     }
 
@@ -89,8 +94,21 @@ public class MyNewsBot extends TelegramLongPollingBot {
     private void searchAndSendNewsByKeyword(Long chatId, String keyword) {
         // Implement logic to search news by keyword from News API and send them to the user
         try {
-            JSONArray news = NewsApiClient.searchNewsByKeyword(keyword);
-            sendArticles(chatId, news);
+            //JSONArray news = NewsApiClient.searchNewsByKeyword(keyword);
+            //sendArticles(chatId, news);
+
+            fetchedNews = NewsApiClient.searchNewsByKeyword(keyword);
+            newsToShow  = new JSONArray();
+
+            for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
+                newsToShow.put(fetchedNews.getJSONObject(i));
+            }
+
+            sendArticles(chatId, newsToShow);
+
+            if (fetchedNews.length() > 3) {
+                sendText(chatId, "Type /more to view more news.");
+            }
         } catch (IOException e) {
             sendText(chatId, "Failed to search news. Please try again later.");
         }
