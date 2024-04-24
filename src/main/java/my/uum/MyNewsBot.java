@@ -12,12 +12,12 @@ public class MyNewsBot extends TelegramLongPollingBot {
     @Override
     public String getBotUsername() {
         // Return bot username
-        return "YourBotUsername";
+        return "s286130_bot";
     }
 
     @Override
     public String getBotToken() {
         // Return bot token
-        return "YourBotToken";
+        return "6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg";
     }
 }
