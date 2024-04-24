@@ -11,8 +11,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.IOException;
 
 public class MyNewsBot extends TelegramLongPollingBot {
-    private final String newsApiKey = "e21629eda54ba291263f3cb2b4fd1328";
-
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -85,12 +83,17 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     private void sendArticles(Long chatId, JSONArray articles) {
         StringBuilder message = new StringBuilder();
+        if (articles.isEmpty()) {
+            sendText(chatId, "No articles found.");
+            return;
+        }
         for (int i = 0; i < articles.length(); i++) {
             JSONObject article = articles.getJSONObject(i);
-            String title = article.getString("title");
+            String title = article.getString("title").replaceAll("<b>|</b>", "");
             String url = article.getString("url");
-            message.append("<b>").append(title).append("</b>\n").append(url).append("\n\n");
+            message.append(title).append("\n").append(url).append("\n\n");
         }
+        System.out.println("Message to send: " + message.toString()); // Debug output
         sendText(chatId, message.toString());
     }
 

@@ -17,18 +17,18 @@ public class NewsApiClient {
     private static final String NEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328"; // Replace with your News API key
 
     public static JSONArray getTopHeadlines() throws IOException {
-        String url = NEWS_API_BASE_URL + "top-headlines?country=us&apiKey=" + NEWS_API_KEY;
+        String url = NEWS_API_BASE_URL + "top-headlines?lang=en&apikey=" + NEWS_API_KEY;
         return sendGetRequest(url);
     }
 
     public static JSONArray getNewsByCategory(String category) throws IOException {
-        String url = NEWS_API_BASE_URL + "top-headlines?country=us&category=" + category + "&apiKey=" + NEWS_API_KEY;
+        String url = NEWS_API_BASE_URL + "top-headlines?country=us&category=" + category + "&apikey=" + NEWS_API_KEY;
         return sendGetRequest(url);
     }
 
     public static JSONArray searchNewsByKeyword(String keyword) throws IOException {
         String encodedKeyword = URLEncoder.encode(keyword, StandardCharsets.UTF_8.toString());
-        String url = NEWS_API_BASE_URL + "everything?q=" + encodedKeyword + "&apiKey=" + NEWS_API_KEY;
+        String url = NEWS_API_BASE_URL + "everything?q=" + encodedKeyword + "&apikey=" + NEWS_API_KEY;
         return sendGetRequest(url);
     }
 
