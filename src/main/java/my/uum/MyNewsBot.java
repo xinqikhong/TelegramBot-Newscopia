@@ -16,7 +16,48 @@ public class MyNewsBot extends TelegramLongPollingBot {
             String text = msg.getText();
             Long chatId = msg.getChatId();
 
+            if (text.equals("/start")) {
+                sendText(chatId, "Welcome to MyNewsBot! Use /help to see available commands.");
+            } else if (text.equals("/help")) {
+                sendText(chatId, "Available commands:\n" +
+                        "/headlines - Get latest news headlines\n" +
+                        "/sports - Get sports news\n" +
+                        "/technology - Get technology news\n" +
+                        "/search [keyword] - Search for news by keyword");
+            } else if (text.equals("/headlines")) {
+                fetchAndSendHeadlines(chatId);
+            } else if (text.equals("/sports")) {
+                fetchAndSendNewsByCategory(chatId, "sports");
+            } else if (text.equals("/technology")) {
+                fetchAndSendNewsByCategory(chatId, "technology");
+            } else if (text.startsWith("/search")) {
+                String keyword = text.substring(8);
+                searchAndSendNewsByKeyword(chatId, keyword);
+            }
+        }
+    }
 
+    private void fetchAndSendHeadlines(Long chatId) {
+        // Implement logic to fetch headlines from News API and send them to the user
+    }
+
+    private void fetchAndSendNewsByCategory(Long chatId, String category) {
+        // Implement logic to fetch news by category from News API and send them to the user
+    }
+
+    private void searchAndSendNewsByKeyword(Long chatId, String keyword) {
+        // Implement logic to search news by keyword from News API and send them to the user
+    }
+
+    private void sendText(Long chatId, String text) {
+        //Send Welcome Msg when user enter command /start
+        SendMessage message = new SendMessage()
+                .setChatId(chatId)
+                .setText(text);
+        try {
+            execute(message);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
         }
     }
 
