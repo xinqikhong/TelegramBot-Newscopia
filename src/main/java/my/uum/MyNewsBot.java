@@ -11,6 +11,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.IOException;
 
 public class MyNewsBot extends TelegramLongPollingBot {
+    private JSONArray fetchedNews = null;
+    private JSONArray newsToShow = null;
+
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -27,7 +30,9 @@ public class MyNewsBot extends TelegramLongPollingBot {
                         "/technology - Get technology news\n" +
                         "/search [keyword] - Search for news by keyword");
             } else if (text.equals("/headlines")) {
-                fetchAndSendHeadlines(chatId);
+                fetchAndSend3Headlines(chatId);
+            } else if (text.equals("/more")) {
+                fetchAndSendMoreHeadlines(chatId);
             } else if (text.equals("/sports")) {
                 fetchAndSendNewsByCategory(chatId, "sports");
             } else if (text.equals("/technology")) {
@@ -39,13 +44,36 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
-    private void fetchAndSendHeadlines(Long chatId) {
-        // Implement logic to fetch headlines from News API and send them to the user
+    private void fetchAndSend3Headlines(Long chatId) {
         try {
-            JSONArray headlines = NewsApiClient.getTopHeadlines();
-            sendArticles(chatId, headlines);
+            fetchedNews = NewsApiClient.getTopHeadlines();
+            newsToShow  = new JSONArray();
+
+            for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
+                newsToShow.put(fetchedNews.getJSONObject(i));
+            }
+
+            sendArticles(chatId, newsToShow);
+
+            // If there are more fetchedNews available, provide an option to fetch more
+            if (fetchedNews.length() > 3) {
+                sendText(chatId, "Type /more to view more headlines.");
+            }
         } catch (IOException e) {
             sendText(chatId, "Failed to fetch headlines. Please try again later.");
+        }
+    }
+
+    private void fetchAndSendMoreHeadlines(Long chatId) {
+        if (fetchedNews != null) {
+            newsToShow = new JSONArray();
+
+            for (int i = 3; i < fetchedNews.length(); i++) {
+                newsToShow.put(fetchedNews.getJSONObject(i));
+            }
+            sendArticles(chatId, newsToShow);
+        } else {
+            sendText(chatId, "No headlines to show. Please fetch headlines using /headlines.");
         }
     }
 
