@@ -13,8 +13,8 @@ import java.nio.charset.StandardCharsets;
 
 public class NewsApiClient {
 
-    private static final String NEWS_API_BASE_URL = "https://newsapi.org/v2/";
-    private static final String NEWS_API_KEY = "YOUR_NEWS_API_KEY"; // Replace with your News API key
+    private static final String NEWS_API_BASE_URL = "https://gnews.io/api/v4/";
+    private static final String NEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328"; // Replace with your News API key
 
     public static JSONArray getTopHeadlines() throws IOException {
         String url = NEWS_API_BASE_URL + "top-headlines?country=us&apiKey=" + NEWS_API_KEY;
