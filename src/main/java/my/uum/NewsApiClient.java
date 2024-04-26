@@ -31,16 +31,27 @@ public class NewsApiClient {
         return sendGetRequest(url);
     }
 
-    private static JSONArray sendGetRequest(String url) throws IOException {
+    private static JSONArray sendGetRequest(String url) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet httpGet = new HttpGet(url);
             try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
-                String responseBody = EntityUtils.toString(response.getEntity());
-                JSONObject jsonResponse = new JSONObject(responseBody);
-                if (jsonResponse.has("articles")) {
-                    return jsonResponse.getJSONArray("articles");
+                int statusCode = response.getStatusLine().getStatusCode();
+                if (statusCode == 200) {
+                    String responseBody = EntityUtils.toString(response.getEntity());
+                    JSONObject jsonResponse = new JSONObject(responseBody);
+                    if (jsonResponse.has("articles")) {
+                        return jsonResponse.getJSONArray("articles");
+                    } else {
+                        System.err.println("Invalid response format: Missing 'articles' key");
+                    }
+                } else {
+                    System.err.println("Failed API call. Status code: " + statusCode);
                 }
             }
+        } catch (IOException e) {
+            System.err.println("Failed to send HTTP request: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
         }
         return new JSONArray();
     }
