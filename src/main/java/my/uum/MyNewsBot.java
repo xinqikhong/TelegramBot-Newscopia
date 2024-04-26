@@ -31,7 +31,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
                         "/help - See available commands\n" +
                         "/headlines - Get latest news headlines\n" +
                         "/country - Search for news by country\n" +
-                        "/search [keyword] - Search for news by keyword");
+                        "/search [keyword] - Search for news by keyword (e.g. /search malaysia)");
             } else if (text.equals("/headlines")) {
                 fetchAndSendHeadlines(chatId);
             } else if (text.equals("/more")) {
@@ -40,7 +40,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 sendCountryMenu(chatId);
             } else if (text.startsWith("/search")) {
                 if (text.length() <= 7) {
-                    sendText(chatId, "Please type the keyword after the /search command. (e.g. /search news)");
+                    sendText(chatId, "Please type the keyword after the /search command. (e.g. /search malaysia)");
                 } else {
                     String keyword = text.substring(8);
                     Search(chatId, keyword, 2);
@@ -63,31 +63,40 @@ public class MyNewsBot extends TelegramLongPollingBot {
     private void fetchAndSendHeadlines(Long chatId) {
         try {
             fetchedNews = NewsApiClient.getTopHeadlines();
-            newsToShow  = new JSONArray();
+            if (fetchedNews != null) {
+                newsToShow = new JSONArray();
+                for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
+                    newsToShow.put(fetchedNews.getJSONObject(i));
+                }
+                sendArticles(chatId, newsToShow, "Top Headlines:");
 
-            for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
-                newsToShow.put(fetchedNews.getJSONObject(i));
-            }
-
-            sendArticles(chatId, newsToShow, "Top Headlines:");
-
-            if (fetchedNews.length() > 3) {
-                sendText(chatId, "Type /more to view more headlines.");
+                if (fetchedNews.length() > 3) {
+                    sendText(chatId, "Type /more to view more headlines.");
+                }
+            } else {
+                sendText(chatId, "Failed to fetch headlines. Please try again later.");
             }
         } catch (IOException e) {
             sendText(chatId, "Failed to fetch headlines. Please try again later.");
+            e.printStackTrace();
         }
     }
 
     private void fetchAndSendMore(Long chatId) {
         try {
             if (fetchedNews != null) {
-                newsToShow = new JSONArray();
-
-                for (int i = 3; i < fetchedNews.length(); i++) {
-                    newsToShow.put(fetchedNews.getJSONObject(i));
+                if (newsToShow.length() < 7) {
+                    newsToShow = new JSONArray();
+                    for (int i = 3; i < fetchedNews.length(); i++) {
+                        newsToShow.put(fetchedNews.getJSONObject(i));
+                    }
+                    sendArticles(chatId, newsToShow, "More:");
+                } else{
+                    sendText(chatId, "No more articles found. Please get more news by using commands:\n" +
+                            "/headlines - Get latest news headlines\n" +
+                            "/country - Search for news by country\n" +
+                            "/search - Search for news by keyword (e.g. /search malaysia)");
                 }
-                sendArticles(chatId, newsToShow, "More:");
             } else {
                 sendText(chatId, "No more articles found.");
             }
@@ -115,16 +124,18 @@ public class MyNewsBot extends TelegramLongPollingBot {
                     break;
             }
 
-            newsToShow = new JSONArray();
+            if (fetchedNews != null) {
+                newsToShow = new JSONArray();
+                for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
+                    newsToShow.put(fetchedNews.getJSONObject(i));
+                }
+                sendArticles(chatId, newsToShow, context);
 
-            for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
-                newsToShow.put(fetchedNews.getJSONObject(i));
-            }
-
-            sendArticles(chatId, newsToShow, context);
-
-            if (fetchedNews.length() > 3) {
-                sendText(chatId, "Type /more to view more news.");
+                if (fetchedNews.length() > 3) {
+                    sendText(chatId, "Type /more to view more news.");
+                }
+            } else {
+                sendText(chatId, "Failed to fetch news. Please try again later.");
             }
         } catch (IOException e) {
             sendText(chatId, "Failed to fetch news. Please try again later.");
