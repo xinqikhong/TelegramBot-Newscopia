@@ -21,23 +21,13 @@ public class NewsSummarizeApi {
         String url = "https://api.meaningcloud.com/summarization-1.0";
 
         // Build the payload
-        String payload = "key=" + API_KEY + "&txt=" + txt + "&sentences=" + sentences;
+        String payload = "key=" + API_KEY + "&sentences=" + sentences;
 
-        // Create a CloseableHttpClient
         try (CloseableHttpClient client = HttpClients.createDefault()) {
-            // Create a URI with the parameters
-            URIBuilder uriBuilder = new URIBuilder(url);
-            uriBuilder.setParameters(
-                    new BasicNameValuePair("key", API_KEY),
-                    new BasicNameValuePair("txt", txt),
-                    new BasicNameValuePair("sentences", String.valueOf(sentences))
-            );
-            URI uri = uriBuilder.build();
-
             // Create an HttpPost request
-            HttpPost request = new HttpPost(uri);
+            HttpPost request = new HttpPost(url);
             request.setHeader("Content-Type", "application/x-www-form-urlencoded");
-            request.setEntity(new StringEntity(payload));
+            request.setEntity(new StringEntity(payload + "&txt=" + txt));
 
             // Execute the request and get the response
             HttpResponse response = client.execute(request);

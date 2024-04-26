@@ -227,7 +227,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
             case "ph":
                 return "Philippines";
             default:
-                return countryCode; // If country code is not found, return the code itself
+                return countryCode;
         }
     }
 
@@ -235,9 +235,17 @@ public class MyNewsBot extends TelegramLongPollingBot {
         if (newsToShow != null && articleNumber >= 1 && articleNumber <= newsToShow.length()) {
             try {
                 JSONObject article = newsToShow.getJSONObject(articleNumber - 1);
-                String articleText = article.getString("content");
+                String articleUrl = article.getString("url");
+                System.out.println(articleUrl);//debug
+                String articleText = ArticleScraper.scrapeArticleText(articleUrl);
+                System.out.println(articleText);
                 String summary = NewsSummarizeApi.summarizeText(articleText, 6);
+                System.out.println(summary);
+                //JSONObject summaryJson = new JSONObject(summary);
+                //String summaryText = summaryJson.getString("summary");
+                //System.out.println(summaryText);
                 sendText(chatId, "Summary of article " + articleNumber + ":\n\n" + summary);
+                System.out.println(summary);
             } catch (Exception e) {
                 sendText(chatId, "Failed to generate summary for this article.");
                 e.printStackTrace();
