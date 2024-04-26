@@ -52,13 +52,13 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 // Display country menu for news search
                 sendCountryMenu(chatId);
             } else if (text.startsWith("/search")) {
-                if (text.length() <= 7) {
-                    // Prompt user to provide keyword for search
-                    sendText(chatId, "Please type the keyword after the /search command. (e.g. /search malaysia)");
-                } else {
+                if (text.length() > 8) {
                     // Perform news search based on provided keyword
                     String keyword = text.substring(8);
                     Search(chatId, keyword, 2);
+                } else {
+                    // Prompt user to provide keyword for search
+                    sendText(chatId, "Please type the keyword after the /search command. (e.g. /search malaysia)");
                 }
             } else{
                 // Default response for unrecognized commands
@@ -226,6 +226,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
         return markup;
     }
 
+    // Method to send text message to the user
     private void sendText(Long chatId, String text) {
         SendMessage message = SendMessage.builder()
                 .chatId(chatId.toString())
@@ -237,20 +238,24 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
+    // Method to send news articles to the user
     private void sendArticles(Long chatId, JSONArray articles, String context) {
         StringBuilder message = new StringBuilder();
 
         message.append(context).append("\n\n");
         if (articles.isEmpty()) {
+            // Inform user if no articles found
             sendText(chatId, "No articles found.");
             return;
         }
+        // Iterate through articles and format them for display
         for (int i = 0; i < articles.length(); i++) {
             JSONObject article = articles.getJSONObject(i);
             String title = article.getString("title").replaceAll("<b>|</b>", "");
             String url = article.getString("url");
-            message.append((i + 1) + ". ").append(title).append("\n").append(url).append("\n\n");
+            message.append((i + 1)).append(". ").append(title).append("\n").append(url).append("\n\n");
         }
+        // Send the formatted articles to the user
         sendText(chatId, message.toString());
     }
 
@@ -275,11 +280,13 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
+        // Return bot username
         return "s286130_bot";
     }
 
     @Override
     public String getBotToken() {
+        // Return bot token
         return "6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg";
     }
 }
