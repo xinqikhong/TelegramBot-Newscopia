@@ -255,6 +255,22 @@ public class MyNewsBot extends TelegramLongPollingBot {
         }
     }
 
+    private void viewArticleSummary(Long chatId, int articleNumber) {
+        if (newsToShow != null && articleNumber >= 1 && articleNumber <= newsToShow.length()) {
+            try {
+                JSONObject article = newsToShow.getJSONObject(articleNumber - 1);
+                String articleText = article.getString("content");
+                String summary = NewsSummarizeApi.summarizeText(articleText, 6);
+                sendText(chatId, "Summary of article " + articleNumber + ":\n\n" + summary);
+            } catch (Exception e) {
+                sendText(chatId, "Failed to generate summary for this article.");
+                e.printStackTrace();
+            }
+        } else {
+            sendText(chatId, "Invalid article number. Please choose a valid number.");
+        }
+    }
+
     @Override
     public String getBotUsername() {
         // Return bot username
