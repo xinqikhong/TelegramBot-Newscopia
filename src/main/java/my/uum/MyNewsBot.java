@@ -15,8 +15,14 @@ import java.util.List;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 
+/**
+ * MyNewsBot is a Telegram bot that provides news headlines, country-based news, and keyword-based news search.
+ * It interacts with users via Telegram messages and inline keyboard options.
+ */
 public class MyNewsBot extends TelegramLongPollingBot {
+    // JSONArray to store fetched news articles
     private JSONArray fetchedNews = null;
+    // JSONArray to store news articles to show to users
     private JSONArray newsToShow = null;
 
     @Override
@@ -27,107 +33,129 @@ public class MyNewsBot extends TelegramLongPollingBot {
             Long chatId = msg.getChatId();
 
             if (text.equals("/start")) {
+                // Send welcome message when user enters /start command
                 sendText(chatId, "Welcome to MyNewsBot! Use /help to see available commands.");
             } else if (text.equals("/help")) {
+                // Provide help information to user
                 sendText(chatId, "Available commands:\n" +
                         "/help - See available commands\n" +
                         "/headlines - Get latest news headlines\n" +
                         "/country - Search for news by country\n" +
                         "/search [keyword] - Search for news by keyword (e.g. /search malaysia)");
             } else if (text.equals("/headlines")) {
+                // Fetch and send latest news headlines
                 fetchAndSendHeadlines(chatId);
             } else if (text.equals("/more")) {
+                // Fetch and send more news articles
                 fetchAndSendMore(chatId);
             } else if (text.equals("/country")) {
+                // Display country menu for news search
                 sendCountryMenu(chatId);
             } else if (text.startsWith("/search")) {
                 if (text.length() <= 7) {
+                    // Prompt user to provide keyword for search
                     sendText(chatId, "Please type the keyword after the /search command. (e.g. /search malaysia)");
                 } else {
+                    // Perform news search based on provided keyword
                     String keyword = text.substring(8);
                     Search(chatId, keyword, 2);
                 }
             } else{
+                // Default response for unrecognized commands
                 sendText(chatId, "Welcome to MyNewsBot! MyNewsBot offers top headlines, country & keyword search. Get global news updates fast! Use /help to see available commands.");
             }
         } else if (update.hasCallbackQuery()) {
-            // Handle callback queries
+            // Handle callback queries (e.g., when user selects country from inline keyboard)
             CallbackQuery callbackQuery = update.getCallbackQuery();
             String callbackData = callbackQuery.getData();
             Long chatId = callbackQuery.getMessage().getChatId();
 
             if (callbackData.startsWith("country_")) {
+                // Perform news search based on selected country
                 String countryCode = callbackData.substring(8);
                 Search(chatId, countryCode, 1);
             }
-
+            // Close the callback query after processing
             AnswerCallbackQuery close = AnswerCallbackQuery.builder()
                     .callbackQueryId(callbackQuery.getId()).build();
-
             try {
-                execute(close);// Optional: You can provide a text response
+                execute(close);
             } catch (TelegramApiException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 
+    // Method to fetch and send latest news headlines
     private void fetchAndSendHeadlines(Long chatId) {
         try {
             fetchedNews = NewsApiClient.getTopHeadlines();
             if (fetchedNews != null) {
                 newsToShow = new JSONArray();
+                // Limit to first 3 headlines for display
                 for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
                     newsToShow.put(fetchedNews.getJSONObject(i));
                 }
+                // Send the fetched headlines to the user
                 sendArticles(chatId, newsToShow, "Top Headlines:");
-
                 if (fetchedNews.length() > 3) {
+                    // Prompt user to get more headlines if available
                     sendText(chatId, "Type /more to view more headlines.");
                 }
             } else {
+                // Inform user if fetching headlines fails
                 sendText(chatId, "Failed to fetch headlines. Please try again later.");
             }
         } catch (IOException e) {
+            // Handle IO exception
             sendText(chatId, "Failed to fetch headlines. Please try again later.");
             e.printStackTrace();
         }
     }
 
+    // Method to fetch and send more news articles
     private void fetchAndSendMore(Long chatId) {
         try {
             if (fetchedNews != null) {
                 if (newsToShow.length() < 7) {
                     newsToShow = new JSONArray();
+                    // Retrieve additional articles beyond the initial headlines
                     for (int i = 3; i < fetchedNews.length(); i++) {
                         newsToShow.put(fetchedNews.getJSONObject(i));
                     }
+                    // Send the additional articles to the user
                     sendArticles(chatId, newsToShow, "More:");
                 } else{
+                    // Prompt user to search articles by other cmd if they try to enter /more cmd more than once
                     sendText(chatId, "No more articles found. Please get more news by using commands:\n" +
                             "/headlines - Get latest news headlines\n" +
                             "/country - Search for news by country\n" +
                             "/search - Search for news by keyword (e.g. /search malaysia)");
                 }
             } else {
+                // Inform user if no more articles available
                 sendText(chatId, "No more articles found.");
             }
         }catch (Exception e) {
+            // Handle any unexpected exceptions
             sendText(chatId, "An unexpected error occurred while processing your request. Please try again later.");
             e.printStackTrace();
         }
     }
 
+    // Method to perform news search by country or keyword
     private void Search(Long chatId, String searchText, int identifier) {
         try {
             String context = "";
             switch (identifier) {
                 case 1:
+                    // Search news by country
                     fetchedNews = NewsApiClient.getNewsByCountry(searchText);
                     String countryName = getCountryName(searchText);
                     context = "Country: " + countryName;
                     break;
                 case 2:
+                    // Search news by keyword
                     fetchedNews = NewsApiClient.getNewsByKeyword(searchText);
                     context = "Keyword: " + searchText;
                     break;
@@ -138,22 +166,28 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
             if (fetchedNews != null) {
                 newsToShow = new JSONArray();
+                // Limit to first 3 articles for display
                 for (int i = 0; i < 3 && i < fetchedNews.length(); i++) {
                     newsToShow.put(fetchedNews.getJSONObject(i));
                 }
+                // Send the search results to the user
                 sendArticles(chatId, newsToShow, context);
 
                 if (fetchedNews.length() > 3) {
+                    // Prompt user to get more news if available
                     sendText(chatId, "Type /more to view more news.");
                 }
             } else {
+                // Inform user if fetching news fails
                 sendText(chatId, "Failed to fetch news. Please try again later.");
             }
         } catch (IOException e) {
+            // Handle IO exception
             sendText(chatId, "Failed to fetch news. Please try again later.");
         }
     }
 
+    // Method to send country menu for news search
     private void sendCountryMenu(Long chatId) {
         SendMessage message = SendMessage.builder()
                 .chatId(chatId.toString())
@@ -161,12 +195,14 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 .replyMarkup(createCountryMenu())
                 .build();
         try {
+            // Send the country menu to the user
             execute(message);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }
     }
 
+    // Method to create inline keyboard menu for selecting country
     private InlineKeyboardMarkup createCountryMenu() {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
@@ -191,7 +227,6 @@ public class MyNewsBot extends TelegramLongPollingBot {
     }
 
     private void sendText(Long chatId, String text) {
-        //Send welcome msg when user enter command /start
         SendMessage message = SendMessage.builder()
                 .chatId(chatId.toString())
                 .text(text).build();
@@ -206,7 +241,6 @@ public class MyNewsBot extends TelegramLongPollingBot {
         StringBuilder message = new StringBuilder();
 
         message.append(context).append("\n\n");
-
         if (articles.isEmpty()) {
             sendText(chatId, "No articles found.");
             return;
@@ -241,13 +275,11 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        // Return bot username
         return "s286130_bot";
     }
 
     @Override
     public String getBotToken() {
-        // Return bot token
         return "6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg";
     }
 }
