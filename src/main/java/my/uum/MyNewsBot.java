@@ -45,6 +45,21 @@ public class MyNewsBot extends TelegramLongPollingBot {
                     String keyword = text.substring(8);
                     Search(chatId, keyword, 2);
                 }
+            } else if (text.startsWith("/summary")) {
+                if (text.length() <= 9) {
+                    sendText(chatId, "Please specify the article number after the /summary command.");
+                } else {
+                    try {
+                        int articleNumber = Integer.parseInt(text.substring(9).trim());
+                        if (articleNumber >= 1 && articleNumber <= newsToShow.length()) {
+                            viewArticleSummary(chatId, articleNumber);
+                        } else {
+                            sendText(chatId, "Invalid article number. Please choose a valid number.");
+                        }
+                    } catch (NumberFormatException e) {
+                        sendText(chatId, "Invalid article number. Please choose a valid number.");
+                    }
+                }
             }else{
                 sendText(chatId, "Welcome to MyNewsBot! MyNewsBot offers top headlines, country & keyword search. Get global news updates fast! Use /help to see available commands.");
             }
@@ -213,6 +228,22 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 return "Philippines";
             default:
                 return countryCode; // If country code is not found, return the code itself
+        }
+    }
+
+    private void viewArticleSummary(Long chatId, int articleNumber) {
+        if (newsToShow != null && articleNumber >= 1 && articleNumber <= newsToShow.length()) {
+            try {
+                JSONObject article = newsToShow.getJSONObject(articleNumber - 1);
+                String articleText = article.getString("content");
+                String summary = NewsSummarizeApi.summarizeText(articleText, 6);
+                sendText(chatId, "Summary of article " + articleNumber + ":\n\n" + summary);
+            } catch (Exception e) {
+                sendText(chatId, "Failed to generate summary for this article.");
+                e.printStackTrace();
+            }
+        } else {
+            sendText(chatId, "Invalid article number. Please choose a valid number.");
         }
     }
 
