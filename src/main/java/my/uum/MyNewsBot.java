@@ -3,6 +3,8 @@ package my.uum;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
+import org.telegram.telegrambots.meta.api.objects.CallbackQuery;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
@@ -50,12 +52,22 @@ public class MyNewsBot extends TelegramLongPollingBot {
             }
         } else if (update.hasCallbackQuery()) {
             // Handle callback queries
-            String callbackData = update.getCallbackQuery().getData();
-            Long chatId = update.getCallbackQuery().getMessage().getChatId();
+            CallbackQuery callbackQuery = update.getCallbackQuery();
+            String callbackData = callbackQuery.getData();
+            Long chatId = callbackQuery.getMessage().getChatId();
 
             if (callbackData.startsWith("country_")) {
                 String countryCode = callbackData.substring(8);
                 Search(chatId, countryCode, 1);
+            }
+
+            AnswerCallbackQuery close = AnswerCallbackQuery.builder()
+                    .callbackQueryId(callbackQuery.getId()).build();
+
+            try {
+                execute(close);// Optional: You can provide a text response
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
             }
         }
     }
