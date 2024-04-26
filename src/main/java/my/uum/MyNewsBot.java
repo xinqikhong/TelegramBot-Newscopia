@@ -45,6 +45,8 @@ public class MyNewsBot extends TelegramLongPollingBot {
                     String keyword = text.substring(8);
                     Search(chatId, keyword, 2);
                 }
+            }else{
+                sendText(chatId, "Welcome to MyNewsBot! MyNewsBot offers top headlines, country & keyword search. Get global news updates fast! Use /help to see available commands.");
             }
         } else if (update.hasCallbackQuery()) {
             // Handle callback queries
@@ -103,7 +105,6 @@ public class MyNewsBot extends TelegramLongPollingBot {
                     fetchedNews = NewsApiClient.getNewsByCountry(searchText);
                     String countryName = getCountryName(searchText);
                     context = "Country: " + countryName;
-                    System.out.println(context);
                     break;
                 case 2:
                     fetchedNews = NewsApiClient.getNewsByKeyword(searchText);
