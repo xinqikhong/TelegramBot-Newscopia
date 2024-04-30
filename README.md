@@ -60,30 +60,33 @@ Pennycook, G., Epstein, Z., Mosleh, M., Arechar, A. A., Eckles, D., & Rand, D. G
 &emsp;&emsp;https://doi.org/10.1038/s41586-021-03344-2<br />
 <br />
 Al-Rawi, A., & Shukla, V. (2020). Bots as Active News Promoters: A Digital Analysis of COVID-19 Tweets.<br />
-&emsp;*Information, 11*(10), 461.<br />
-&emsp;https://doi.org/10.3390/info11100461<br />
+&emsp;&emsp;*Information, 11*(10), 461.<br />
+&emsp;&emsp;https://doi.org/10.3390/info11100461<br />
 <br />
 Knuutila, A., Herasimenka, A., Bright, J., Nielsen, R., & Howard, P. (2020). Junk News Distribution on Telegram:<br />
-&emsp;The Visibility of English-language News Sources on Public Telegram Channels. *COMPROP Data Memo, 5*<br />
-&emsp;https://demtech.oii.ox.ac.uk/wp-content/uploads/sites/12/2020/10/Junk-News-Distribution-on-Telegram.-Data-Memo-&emsp;v1.1.pdf<br />
+&emsp;&emsp;The Visibility of English-language News Sources on Public Telegram Channels. *COMPROP Data Memo, 5*<br />
+&emsp;&emsp;https://demtech.oii.ox.ac.uk/wp-content/uploads/sites/12/2020/10/Junk-News-Distribution-on-<br />
+&emsp;&emsp;Telegram.-Data-Memo-v1.1.pdf<br />
 <br />
 Vaghela, V. (2020, December 22). *How to create a Telegram bot using java?* Medium.<br />
-&emsp;https://vaghelaviral.medium.com/how-to-create-a-telegram-bot-using-java-5710bed16c0f<br />
+&emsp;&emsp;https://vaghelaviral.medium.com/how-to-create-a-telegram-bot-using-java-5710bed16c0f<br />
 <br />
 *Lesson 6. Inline keyboards and editing message’s text* (2022, April 5). Gitbook.io.<br />
-&emsp;https://monsterdeveloper.gitbook.io/java-telegram-bot-tutorial/lesson-6.-inline-keyboards-and-editing-messages-&emsp;text<br />
+&emsp;&emsp;https://monsterdeveloper.gitbook.io/java-telegram-bot-tutorial/lesson-6.-inline-keyboards-and<br />
+&emsp;&emsp;-editing-messages-text<br />
 <br />
 *Top 5 free news API in the market: Newsdata, Newsapi, Newscather, currents api, and Gnews api.* (n.d.).<br />
-&emsp;Www.linkedin.com. https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi-currents-gnews-&emsp;thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A<br />
+&emsp;&emsp;Www.linkedin.com. https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi<br />
+&emsp;&emsp;-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A<br />
 <br />
 *Bots: An introduction for developers.* (n.d.). Core.telegram.org.<br />
-&emsp;https://core.telegram.org/bots<br />
+&emsp;&emsp;https://core.telegram.org/bots<br />
 <br />
 *Telegram Bot Features.* (n.d.). Core.telegram.org.<br />
-&emsp;https://core.telegram.org/bots/features<br />
+&emsp;&emsp;https://core.telegram.org/bots/features<br />
 <br />
 *From BotFather to “Hello World.”* (n.d.). Core.telegram.org.<br />
-&emsp;https://core.telegram.org/bots/tutorial<br />
+&emsp;&emsp;https://core.telegram.org/bots/tutorial<br />
 <br />
 (OpenAI, personal communication, April 25, 2024).
 ‌
