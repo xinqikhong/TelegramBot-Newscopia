@@ -21,6 +21,8 @@
    6. Conclusion
 
 ## UML Class Diagram
+![UML](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/cb45c54c-a195-45a5-b68a-33b7440308d8)
+
 ## JavaDoc
 ## References (Not less than 10)
 ## Youtube Presentation
