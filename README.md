@@ -26,6 +26,7 @@
       Conducting thorough research on news to understand user preferences and behaviors. Utilizing programming languages such as Java to develop the Telegram bot. Integrating news APIs, such as the GNews API, to fetch reliable and verified news articles from various sources. Additionally, documenting the code extensively using Javadoc comments will ensure clarity and ease of understanding for future maintenance and development purposes.
       
    5. Result
+      Upon successful implementation, users will be able to interact with the Telegram bot to receive news updates tailored to their preferences. They can effortlessly retrieve top headlines, search for news by selecting a country, or search for news based on specific keywords, all within the familiar Telegram environment.
       
    6. Conclusion
 
