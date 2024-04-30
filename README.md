@@ -7,7 +7,7 @@
 
 ## Your Info:
 1. Matric Number & Name & Photo & Phone Number
-<img src="https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/7e4e5c86-e307-405a-a621-1c6d94847df7" alt="XinQi-whitebg-highresolut" width="300" height="200"><br />
+<img src="https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/7e4e5c86-e307-405a-a621-1c6d94847df7" alt="XinQi-whitebg-highresolut" width="100" height="300"><br />
 Matric Number: 286130<br />
 Name: Khong Xin Qi<br />
 Phone Number: 01161231830<br />
