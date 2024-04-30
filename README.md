@@ -23,6 +23,7 @@
       To develop a Telegram bot that simplifies global news access, bridging traditional and online consumption patterns. Furthermore, to combat misinformation by delivering reliable news from trustworthy sources.
 
    4. Methodology
+      Conducting thorough research on news to understand user preferences and behaviors. Utilizing programming languages such as Java to develop the Telegram bot. Integrating news APIs, such as the GNews API, to fetch reliable and verified news articles from various sources. Additionally, documenting the code extensively using Javadoc comments will ensure clarity and ease of understanding for future maintenance and development purposes.
       
    5. Result
       
