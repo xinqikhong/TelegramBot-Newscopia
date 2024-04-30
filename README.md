@@ -10,6 +10,7 @@
 2. Other related info (if any)
 
 ## Link for the API
+https://gnews.io/
 
 ## Title of your application (a unique title)
 ## Abstract (in 300 words)
