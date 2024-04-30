@@ -79,8 +79,6 @@ Vaghela, V. (2020, December 22). *How to create a Telegram bot using java?* Medi
 &emsp;&emsp;https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi-currents-gnews-<br />
 &emsp;&emsp;thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A<br />
 <br />
-&emsp;&emsp;-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A"<br />
-<br />
 *Bots: An introduction for developers.* (n.d.). Core.telegram.org.<br />
 &emsp;&emsp;https://core.telegram.org/bots<br />
 <br />
