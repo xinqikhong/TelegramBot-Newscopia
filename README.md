@@ -7,10 +7,10 @@
 
 ## Your Info:
 1. Matric Number & Name & Photo & Phone Number
-![XinQi-whitebg-highresolut](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/7e4e5c86-e307-405a-a621-1c6d94847df7)
-Matric Number: 286130
-Name: Khong Xin Qi
-Phone Number: 01161231830
+![XinQi-whitebg-highresolut](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/7e4e5c86-e307-405a-a621-1c6d94847df7) <br />
+Matric Number: 286130<br />
+Name: Khong Xin Qi<br />
+Phone Number: 01161231830<br />
 
 2. Other related info (if any)
 
