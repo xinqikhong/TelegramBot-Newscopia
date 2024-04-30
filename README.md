@@ -29,6 +29,7 @@
       Upon successful implementation, users will be able to interact with the Telegram bot to receive news updates tailored to their preferences. They can effortlessly retrieve top headlines, search for news by selecting a country, or search for news based on specific keywords, all within the familiar Telegram environment.
       
    6. Conclusion
+      Developing a Telegram bot for accessing global news addresses the need for a convenient and efficient solution to stay informed in the current digital era. Through the utilization of Telegram's features and integration with reliable news sources,this project aims to provide users with a seamless experience to access timely and relevant news content.
 
 ## UML Class Diagram
 ![UML](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/cb45c54c-a195-45a5-b68a-33b7440308d8)
