@@ -47,19 +47,45 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
 &emsp;*Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010<br />
 <br />
-Kitsa, M. (2023). TELEGRAM NEWS CHANNELS: OVERVIEW, AUDIENCE PREFERENCES, SPECIFICS OF FUNCTIONING. <br />
+Kitsa, M. (2023). Telegram News Channels: Overview, Audience Preferenes, Specifics of Functioning. <br />
 &emsp;*Vìsnik Nacìonalʹnogo Unìversitetu “Lʹvìvsʹka Polìtehnìka”. Serìâ: “Žurnalìstsʹkì Nauki,”*<br />
 &emsp;*2*(6), 66–72. https://doi.org/10.23939/sjs2023.02.066<br />
 <br />
 Herrero-Solana, V., & Castro-Castro, C. (2022). Telegram Channels and <br />
-&emsp;Bots: A Ranking of Media Outlets Based in Spain. *Societies, 12”. Serìâ: “Žurnalìstsʹkì Nauki,”*(6),<br />
+&emsp;Bots: A Ranking of Media Outlets Based in Spain. *Societies, 12”. Serìâ: “Žurnalìstsʹkì Nauki,*(6),<br />
 &emsp;164. https://doi.org/10.3390/soc12060164<br />
 <br />
 Pennycook, G., Epstein, Z., Mosleh, M., Arechar, A. A., Eckles, D., & Rand, D. G. (2021).<br />
-&emsp;Shifting Attention to Accuracy Can Reduce Misinformation Online. *Nature, 592”*(7855).<br />
+&emsp;Shifting Attention to Accuracy Can Reduce Misinformation Online. *Nature, 592*(7855).<br />
 &emsp;https://doi.org/10.1038/s41586-021-03344-2<br />
 <br />
-
+Al-Rawi, A., & Shukla, V. (2020). Bots as Active News Promoters: A Digital Analysis of COVID-19 Tweets.<br />
+&emsp;*Information, 11*(10), 461.<br />
+&emsp;https://doi.org/10.3390/info11100461<br />
+<br />
+Knuutila, A., Herasimenka, A., Bright, J., Nielsen, R., & Howard, P. (2020). Junk News Distribution on Telegram:<br />
+&emsp;The Visibility of English-language News Sources on Public Telegram Channels. *COMPROP Data Memo, 5*<br />
+&emsp;https://demtech.oii.ox.ac.uk/wp-content/uploads/sites/12/2020/10/Junk-News-Distribution-on-Telegram.-Data-Memo-&emsp;v1.1.pdf<br />
+<br />
+Vaghela, V. (2020, December 22). *How to create a Telegram bot using java?* Medium.<br />
+&emsp;https://vaghelaviral.medium.com/how-to-create-a-telegram-bot-using-java-5710bed16c0f<br />
+<br />
+*Lesson 6. Inline keyboards and editing message’s text* (2022, April 5). Gitbook.io.<br />
+&emsp;https://monsterdeveloper.gitbook.io/java-telegram-bot-tutorial/lesson-6.-inline-keyboards-and-editing-messages-&emsp;text<br />
+<br />
+*Top 5 free news API in the market: Newsdata, Newsapi, Newscather, currents api, and Gnews api.* (n.d.).<br />
+&emsp;Www.linkedin.com. https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi-currents-gnews-&emsp;thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A<br />
+<br />
+*Bots: An introduction for developers.* (n.d.). Core.telegram.org.<br />
+&emsp;https://core.telegram.org/bots<br />
+<br />
+*Telegram Bot Features.* (n.d.). Core.telegram.org.<br />
+&emsp;https://core.telegram.org/bots/features<br />
+<br />
+*From BotFather to “Hello World.”* (n.d.). Core.telegram.org.<br />
+&emsp;https://core.telegram.org/bots/tutorial<br />
+<br />
+(OpenAI, personal communication, April 25, 2024).
 ‌
 ## Youtube Presentation
 ## Result/Output (Screenshot of the output)
