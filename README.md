@@ -45,19 +45,19 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 ## JavaDoc
 ## References (Not less than 10)
 Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
-&emsp;*Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010<br />
+&emsp;&emsp;*Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010<br />
 <br />
 Kitsa, M. (2023). Telegram News Channels: Overview, Audience Preferenes, Specifics of Functioning. <br />
-&emsp;*Vìsnik Nacìonalʹnogo Unìversitetu “Lʹvìvsʹka Polìtehnìka”. Serìâ: “Žurnalìstsʹkì Nauki,”*<br />
-&emsp;*2*(6), 66–72. https://doi.org/10.23939/sjs2023.02.066<br />
+&emsp;&emsp;*Vìsnik Nacìonalʹnogo Unìversitetu “Lʹvìvsʹka Polìtehnìka”. Serìâ: “Žurnalìstsʹkì Nauki,”*<br />
+&emsp;&emsp;*2*(6), 66–72. https://doi.org/10.23939/sjs2023.02.066<br />
 <br />
-Herrero-Solana, V., & Castro-Castro, C. (2022). Telegram Channels and <br />
-&emsp;Bots: A Ranking of Media Outlets Based in Spain. *Societies, 12”. Serìâ: “Žurnalìstsʹkì Nauki,*(6),<br />
-&emsp;164. https://doi.org/10.3390/soc12060164<br />
+Herrero-Solana, V., & Castro-Castro, C. (2022). Telegram Channels and Bots: A Ranking of Media Outlets<br />
+&emsp;&emsp;Based in Spain. *Societies, 12”. Serìâ: “Žurnalìstsʹkì Nauki,*(6), 164. <br />
+&emsp;&emsp;https://doi.org/10.3390/soc12060164<br />
 <br />
-Pennycook, G., Epstein, Z., Mosleh, M., Arechar, A. A., Eckles, D., & Rand, D. G. (2021).<br />
-&emsp;Shifting Attention to Accuracy Can Reduce Misinformation Online. *Nature, 592*(7855).<br />
-&emsp;https://doi.org/10.1038/s41586-021-03344-2<br />
+Pennycook, G., Epstein, Z., Mosleh, M., Arechar, A. A., Eckles, D., & Rand, D. G. (2021). Shifting Attention<br />
+&emsp;&emsp;to Accuracy Can Reduce Misinformation Online. *Nature, 592*(7855).<br />
+&emsp;&emsp;https://doi.org/10.1038/s41586-021-03344-2<br />
 <br />
 Al-Rawi, A., & Shukla, V. (2020). Bots as Active News Promoters: A Digital Analysis of COVID-19 Tweets.<br />
 &emsp;*Information, 11*(10), 461.<br />
