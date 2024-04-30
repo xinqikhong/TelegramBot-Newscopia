@@ -55,7 +55,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 if (text.length() > 8) {
                     // Perform news search based on provided keyword
                     String keyword = text.substring(8);
-                    Search(chatId, keyword, 2);
+                    search(chatId, keyword, 2);
                 } else {
                     // Prompt user to provide keyword for search
                     sendText(chatId, "Please type the keyword after the /search command. (e.g. /search malaysia)");
@@ -73,7 +73,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
             if (callbackData.startsWith("country_")) {
                 // Perform news search based on selected country
                 String countryCode = callbackData.substring(8);
-                Search(chatId, countryCode, 1);
+                search(chatId, countryCode, 1);
             }
             // Close the callback query after processing
             AnswerCallbackQuery close = AnswerCallbackQuery.builder()
@@ -144,7 +144,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
     }
 
     // Method to perform news search by country or keyword
-    private void Search(Long chatId, String searchText, int identifier) {
+    private void search(Long chatId, String searchText, int identifier) {
         try {
             String context = "";
             switch (identifier) {
