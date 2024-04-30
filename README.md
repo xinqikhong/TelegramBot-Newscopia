@@ -14,10 +14,15 @@
 ## Title of your application (a unique title)
 ## Abstract (in 300 words)
    1. Background
+      In today's fast-paced world, it's critical to stay informed about global events. With the advent of technology, accessing news has become easier than ever. Telegram, a popular messaging platform, provides a convenient platform for users to stay updated on the latest news. Developing a Telegram bot capable of delivering news based on user requests leverages this technology to enhance the user experience and accessibility to information.
    2. Problem Statement (from article)
+      
    3. Main objective
+      
    4. Methodology
+      
    5. Result
+      
    6. Conclusion
 
 ## UML Class Diagram
