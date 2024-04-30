@@ -12,7 +12,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * A utility class for interacting with the GNews API to fetch news data.
+ * This class is for interacting with the GNews API to fetch news data.
+ *
+ * @author Khong Xin Qi
  */
 public class NewsApiClient {
     // Base URL of the GNews API
@@ -20,26 +22,44 @@ public class NewsApiClient {
     // API key for accessing the GNews API
     private static final String GNEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328";
 
-    // Fetches the top headlines from the GNews API.
+    /**
+     * This method is for fetching the top headlines from the GNews API.
+     * @return A JSONArray containing the top headlines.
+     * @throws IOException If an IO error occurs during the API call.
+     */
     public static JSONArray getTopHeadlines() throws IOException {
         String url = GNEWS_API_BASE_URL + "top-headlines?lang=en&apikey=" + GNEWS_API_KEY;
         return sendGetRequest(url);
     }
 
-    // Fetches news articles from the GNews API based on a specific country.
+    /**
+     * This method is for fetching news articles from the GNews API based on a specific country.
+     * @param country The country for which news articles are to be fetched.
+     * @return A JSONArray containing news articles related to the specified country.
+     * @throws IOException If an IO error occurs during the API call.
+     */
     public static JSONArray getNewsByCountry(String country) throws IOException {
         String url = GNEWS_API_BASE_URL + "search?q=example&lang=en&country=" + country + "&apikey=" + GNEWS_API_KEY;
         return sendGetRequest(url);
     }
 
-    // Fetches news articles from the GNews API based on a specific keyword.
+    /**
+     * This method is for fetching news articles from the GNews API based on a specific keyword.
+     * @param keyword The keyword for which news articles are to be fetched.
+     * @return A JSONArray containing news articles related to the specified keyword.
+     * @throws IOException If an IO error occurs during the API call.
+     */
     public static JSONArray getNewsByKeyword(String keyword) throws IOException {
         String encodedKeyword = URLEncoder.encode(keyword, StandardCharsets.UTF_8.toString());
         String url = GNEWS_API_BASE_URL + "search?q=" + encodedKeyword + "&lang=en&apikey=" + GNEWS_API_KEY;
         return sendGetRequest(url);
     }
 
-    // Sends an HTTP GET request to the specified URL and retrieves the response.
+    /**
+     * This method is for sending an HTTP GET request to the specified URL and retrieving the response.
+     * @param url The URL to which the GET request is sent.
+     * @return A JSONArray containing the response data.
+     */
     private static JSONArray sendGetRequest(String url) {
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
             HttpGet httpGet = new HttpGet(url);
