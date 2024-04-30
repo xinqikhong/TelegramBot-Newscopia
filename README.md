@@ -20,7 +20,8 @@
       The problem stems from differing news consumption habits across age groups. Older individuals prefer traditional sources such as websites, while younger generations, especially social media users, favor platforms with social features (Geers, 2020). This highlights the necessity of addressing the gap between traditional and online news consumption patterns. Additionally, false news spreads rapidly on social media due to users sharing information without verifying its accuracy (Pennycook et al., 2021). This underscores the necessity of developing a news Telegram bot that promotes informed sharing by providing reliable and verified news sources to combat misinformation.
 
    3. Main objective
-      
+      To develop a Telegram bot that simplifies global news access, bridging traditional and online consumption patterns. Furthermore, to combat misinformation by delivering reliable news from trustworthy sources.
+
    4. Methodology
       
    5. Result
