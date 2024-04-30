@@ -76,8 +76,9 @@ Vaghela, V. (2020, December 22). *How to create a Telegram bot using java?* Medi
 &emsp;&emsp;-editing-messages-text<br />
 <br />
 *Top 5 free news API in the market: Newsdata, Newsapi, Newscather, currents api, and Gnews api.* (n.d.).<br />
-&emsp;&emsp;Www.linkedin.com. https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi<br />
-&emsp;&emsp;-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A<br />
+&emsp;&emsp;<a href="https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A">https://www.linkedin.com/pulse/top-5-free-news-api-market-newsdata-newsapi-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A</a><br />
+<br />
+&emsp;&emsp;-currents-gnews-thakur#:~:text=Top%205%20free%20news%20API%20in%20the%20market%3A"<br />
 <br />
 *Bots: An introduction for developers.* (n.d.). Core.telegram.org.<br />
 &emsp;&emsp;https://core.telegram.org/bots<br />
