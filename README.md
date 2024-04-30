@@ -45,7 +45,7 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 ## JavaDoc
 ## References (Not less than 10)
 1. Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
-&emsp *Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010
+&emsp; *Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010
 
 ‌
 ## Youtube Presentation
