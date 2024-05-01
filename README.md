@@ -13,7 +13,8 @@ Name: Khong Xin Qi<br />
 Phone Number: 01161231830<br />
 
 2. Other related info (if any)<br />
-The program is deployed on an AWS VPS. If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
+The program is deployed on an AWS VPS.<br />
+If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
 
 ## Link for the API
 https://gnews.io/
