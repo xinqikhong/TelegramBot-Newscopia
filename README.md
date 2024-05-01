@@ -95,8 +95,11 @@ Vaghela, V. (2020, December 22). *How to create a Telegram bot using java?* Medi
 *From BotFather to “Hello World.”* (n.d.). Core.telegram.org.<br />
 &emsp;&emsp;https://core.telegram.org/bots/tutorial<br />
 <br />
-(OpenAI, personal communication, April 25, 2024).
-‌
+*Lesson 5. Deploy your bot | Java Telegram Bot Tutorial.* (2022, April 5). Gitbook.io.<br />
+&emsp;&emsp;https://monsterdeveloper.gitbook.io/java-telegram-bot-tutorial/lesson-5.-deploy-your-bot<br />
+<br />
+
 ## Youtube Presentation
+
 ## Result/Output (Screenshot of the output)
 
