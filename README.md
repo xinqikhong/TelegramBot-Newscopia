@@ -16,7 +16,6 @@ Phone Number: 01161231830<br />
 To run the program on local machine, the BOT_TOKEN and API_KEY need to be set in the system environment variable:<br />
 Variable Name: BOT_TOKEN<br />
 Variable Value: 6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg<br />
-<br />
 Variable Name: API_KEY<br />
 Variable Value: e21629eda54ba291263f3cb2b4fd1328<br />
 
