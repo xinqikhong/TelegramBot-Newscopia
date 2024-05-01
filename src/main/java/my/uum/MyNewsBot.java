@@ -41,7 +41,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
             if (text.equals("/start")) {
                 // Send welcome message when user enters /start command
-                sendText(chatId, "Welcome to MyNewsBot! Use /help to see available commands.");
+                sendText(chatId, "Welcome to Newscopia! Use /help to see available commands.");
             } else if (text.equals("/help")) {
                 // Provide help information to user
                 sendText(chatId, "Available commands:\n" +
@@ -69,7 +69,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
                 }
             } else{
                 // Default response for unrecognized commands
-                sendText(chatId, "Welcome to MyNewsBot! MyNewsBot offers top headlines, country & keyword search. Get global news updates fast! Use /help to see available commands.");
+                sendText(chatId, "Welcome to Newscopia! Newscopia offers top headlines, country & keyword search. Get global news updates fast! Use /help to see available commands.");
             }
         } else if (update.hasCallbackQuery()) {
             // Handle callback queries (e.g., when user selects country from inline keyboard)
