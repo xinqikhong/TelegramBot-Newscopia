@@ -20,7 +20,7 @@ public class NewsApiClient {
     // Base URL of the GNews API
     private static final String GNEWS_API_BASE_URL = "https://gnews.io/api/v4/";
 
-    // API key for accessing the GNews API
+    // API key for accessing the GNews API. Note: API_KEY need to be set in the system environment variable with its actual value (More Information on README.md).
     private static String apiKey = System.getenv("API_KEY");
 
     /**

@@ -327,6 +327,7 @@ public class MyNewsBot extends TelegramLongPollingBot {
 
     /**
      * This method returns the token of the bot.
+     * Note: BOT_TOKEN need to be set in the system environment variable with its actual value (More Information on README.md).
      * @return The bot token.
      */
     @Override
