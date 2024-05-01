@@ -13,6 +13,12 @@ Name: Khong Xin Qi<br />
 Phone Number: 01161231830<br />
 
 2. Other related info (if any)
+To run the program on local machine, the BOT_TOKEN and API_KEY need to be set in the system environment variable:
+Variable Name: BOT_TOKEN
+Variable Value: 6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg
+
+Variable Name: API_KEY
+Variable Value: e21629eda54ba291263f3cb2b4fd1328
 
 ## Link for the API
 https://gnews.io/
