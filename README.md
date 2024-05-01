@@ -48,6 +48,8 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 ![UML](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/cb45c54c-a195-45a5-b68a-33b7440308d8)
 
 ## JavaDoc
+http://localhost:63342/assignment-1-xinqikhong/JavaDoc/my/uum/package-summary.html
+
 ## References (Not less than 10)
 Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
 &emsp;&emsp;*Public Opinion Quarterly*, 84. https://doi.org/10.1093/poq/nfaa010<br />
