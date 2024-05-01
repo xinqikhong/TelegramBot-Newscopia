@@ -19,8 +19,9 @@ import java.nio.charset.StandardCharsets;
 public class NewsApiClient {
     // Base URL of the GNews API
     private static final String GNEWS_API_BASE_URL = "https://gnews.io/api/v4/";
+
     // API key for accessing the GNews API
-    private static final String GNEWS_API_KEY = "e21629eda54ba291263f3cb2b4fd1328";
+    private static String apiKey = System.getenv("API_KEY");
 
     /**
      * This method is for fetching the top headlines from the GNews API.
@@ -28,7 +29,7 @@ public class NewsApiClient {
      * @throws IOException If an IO error occurs during the API call.
      */
     public static JSONArray getTopHeadlines() throws IOException {
-        String url = GNEWS_API_BASE_URL + "top-headlines?lang=en&apikey=" + GNEWS_API_KEY;
+        String url = GNEWS_API_BASE_URL + "top-headlines?lang=en&apikey=" + apiKey;
         return sendGetRequest(url);
     }
 
@@ -39,7 +40,7 @@ public class NewsApiClient {
      * @throws IOException If an IO error occurs during the API call.
      */
     public static JSONArray getNewsByCountry(String country) throws IOException {
-        String url = GNEWS_API_BASE_URL + "search?q=example&lang=en&country=" + country + "&apikey=" + GNEWS_API_KEY;
+        String url = GNEWS_API_BASE_URL + "search?q=example&lang=en&country=" + country + "&apikey=" + apiKey;
         return sendGetRequest(url);
     }
 
@@ -51,7 +52,7 @@ public class NewsApiClient {
      */
     public static JSONArray getNewsByKeyword(String keyword) throws IOException {
         String encodedKeyword = URLEncoder.encode(keyword, StandardCharsets.UTF_8.toString());
-        String url = GNEWS_API_BASE_URL + "search?q=" + encodedKeyword + "&lang=en&apikey=" + GNEWS_API_KEY;
+        String url = GNEWS_API_BASE_URL + "search?q=" + encodedKeyword + "&lang=en&apikey=" + apiKey;
         return sendGetRequest(url);
     }
 

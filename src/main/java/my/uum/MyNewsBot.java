@@ -331,6 +331,8 @@ public class MyNewsBot extends TelegramLongPollingBot {
      */
     @Override
     public String getBotToken() {
-        return "6580203514:AAE2xDxJslQ_aiv6WYLubhriAj7t8wDVxwg";
+        // Read the bot token from the environment variable
+        String token = System.getenv("BOT_TOKEN");
+        return token;
     }
 }
