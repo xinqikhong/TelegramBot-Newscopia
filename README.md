@@ -13,8 +13,6 @@ Name: Khong Xin Qi<br />
 Phone Number: 01161231830<br />
 
 2. Other related info (if any)<br />
-The program is deployed on an AWS VPS.<br />
-If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
 
 ## Link for the API
 https://gnews.io/
@@ -46,6 +44,9 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 
 ## JavaDoc
 http://localhost:63342/assignment-1-xinqikhong/JavaDoc/my/uum/package-summary.html
+
+Note: The program is deployed on an AWS VPS.<br />
+If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
 
 ## References (Not less than 10)
 Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
