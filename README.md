@@ -46,8 +46,7 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
       Developing a Telegram bot for accessing global news addresses the need for a convenient and efficient solution to stay informed in the current digital era. Through the utilization of Telegram's features and integration with reliable news sources,this project aims to provide users with a seamless experience to access timely and relevant news content.
 
 ## UML Class Diagram
-![uml](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/d2588478-0a25-43dd-8683-3bce73a48ae9)
-
+![uml_latest](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/039f042f-5606-4df6-8ad5-86bc35b738ed)
 
 ## JavaDoc
 https://xinqikhong.github.io/STIW3054-assignment-1-xinqikhong-JavaDoc/my/uum/package-summary.html
