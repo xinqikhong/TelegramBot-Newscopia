@@ -20,6 +20,9 @@ https://gnews.io/
 ## Link for the Telegram Bot
 https://t.me/s286130_bot
 
+Note: The program is deployed on an AWS VPS.<br />
+If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
+
 ## Title of your application (a unique title)
 Newscopia
 
@@ -46,10 +49,7 @@ In today's fast-paced world, it's crucial to stay informed about global events. 
 ![UML](https://github.com/STIW3054-A232/assignment-1-xinqikhong/assets/129888504/cb45c54c-a195-45a5-b68a-33b7440308d8)
 
 ## JavaDoc
-http://localhost:63342/assignment-1-xinqikhong/JavaDoc/my/uum/package-summary.html
-
-Note: The program is deployed on an AWS VPS.<br />
-If want to run the program on a local machine, the BOT_TOKEN and API_KEY need to be set as system environment variables.<br />
+https://xinqikhong.github.io/STIW3054-assignment-1-xinqikhong-JavaDoc/my/uum/package-summary.html
 
 ## References (Not less than 10)
 Geers, S. (2020). News Consumption across Media Platforms and Content.<br />
