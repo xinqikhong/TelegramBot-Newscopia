@@ -17,6 +17,9 @@ Phone Number: 01161231830<br />
 ## Link for the API
 https://gnews.io/
 
+## Link for the Telegram Bot
+https://t.me/s286130_bot
+
 ## Title of your application (a unique title)
 Newscopia
 
